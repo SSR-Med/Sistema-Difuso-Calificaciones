@@ -1,0 +1,85 @@
+[System]
+Name='FIS_Examen'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=2
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Tiempo_de_duracion_limite'
+Range=[15 240]
+NumMFs=5
+MF1='muy_poco':'linzmf',[15 40]
+MF2='poco':'trapmf',[40 50 60 70]
+MF3='medio':'trapmf',[60 80 105 130]
+MF4='alto':'trapmf',[115 130 160 180]
+MF5='muy_alto':'linsmf',[180 240]
+
+[Input2]
+Name='Cantidad_de_preguntas'
+Range=[3 40]
+NumMFs=4
+MF1='muy_poco':'linzmf',[3 10]
+MF2='intermedio':'trapmf',[8 12 15 18]
+MF3='alto':'trapmf',[15 19 24 30]
+MF4='demasiado':'linsmf',[28 40]
+
+[Input3]
+Name='Aprobacion'
+Range=[0 100]
+NumMFs=4
+MF1='pocos':'linzmf',[0 20]
+MF2='algunos':'trapmf',[18 25 32 40]
+MF3='promedio':'trapmf',[35 48 60 70]
+MF4='alto':'linsmf',[68 100]
+
+[Input4]
+Name='Rendimiento'
+Range=[0 5]
+NumMFs=5
+MF1='muy_bajo':'linzmf',[0 1.5]
+MF2='bajo':'trapmf',[1.2 1.6 2.3 2.7]
+MF3='promedio':'trapmf',[2.6 2.9 3.2 3.5]
+MF4='alto':'trapmf',[3.4 3.7 4.1 4.5]
+MF5='muy_alto':'linsmf',[4.4 5]
+
+[Output1]
+Name='Dificultad'
+Range=[0 10]
+NumMFs=4
+MF1='muy_facil':'linzmf',[0 2.5]
+MF2='Facil':'trapmf',[2.3 2.9 3.7 4.5]
+MF3='intermedio':'trapmf',[4.2 5.2 6.3 7.5]
+MF4='complejo':'linsmf',[7.3 10]
+
+[Output2]
+Name='Perdida'
+Range=[0 100]
+NumMFs=4
+MF1='muy_baja':'linzmf',[0 18]
+MF2='baja':'trapmf',[16 22 28 35]
+MF3='regular':'trapmf',[30 41 53 60]
+MF4='alta':'linsmf',[58 100]
+
+[Rules]
+2 3 0 0, 0 4 (1) : 1
+0 0 1 1, 0 4 (1) : 1
+4 2 0 0, 0 1 (1) : 1
+0 0 3 3, 0 3 (1) : 1
+2 4 0 0, 4 0 (1) : 1
+4 2 0 0, 1 0 (1) : 1
+0 0 2 4, 3 0 (1) : 1
+1 1 2 2, 3 3 (1) : 1
+5 3 3 0, 3 0 (1) : 1
+3 2 4 0, 1 1 (1) : 1
+3 2 0 3, 2 2 (1) : 1
+3 1 0 5, 1 1 (1) : 1
+0 0 4 0, 2 2 (1) : 1
+5 0 1 0, 4 4 (1) : 1
+4 0 0 2, 3 0 (1) : 1
